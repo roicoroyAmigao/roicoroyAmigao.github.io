@@ -1,4 +1,4 @@
-# flutter_blog_github_pages
+# boring_to_beautiful
 
 A new Flutter project.
 
