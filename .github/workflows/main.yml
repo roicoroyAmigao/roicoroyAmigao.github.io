@@ -1,45 +1,20 @@
-name: Flutter Web
+name: Publish to GitHub Pages
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
   build:
-    name: Build Web
-    env:
-      my_secret: ${{secrets.hosting_secret}}
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v2
-      - uses: actions/setup-java@v1
+      - uses: subosito/flutter-action@v1
         with:
-          java-version: '12.x'
-      - uses: actions/setup-node@v3.6.0
-        with:
-          channel: 'dev'
-          token: ${{secrets.hosting_secret}}
-      - run: flutter config --enable-web
+          channel: beta
       - run: flutter pub get
-      - run: flutter build web --release
-      - run: |
-          cd build/web
-          # git init --quiet
-          git init --quiet
-          # in line 24 and 25 type your email id and username respectively
-          # git config --global user.email roicoroy@mercadoamigao.com
-          # git config --global user.name roicoroyAmigao
-          git config --global user.email ${{secrets.email}}
-          git config --global user.name roicoroyAmigao
-          # git config --global init.defaultBranch main
-          # git branch -m main
-          git status
-          # in line 30 after @ add your repo link
-          # git remote add origin https://${{secrets.hosting_secret}}@repo_link
-          git remote add origin https://${{secrets.hosting_secret}}@github.com/roicoroyAmigao/roicoroyAmigao.github.io.git
-          git remote -v
-          git checkout gh-pages
-          git add .
-          git commit -m "update"
-          git push --no-verify
-          git status
+      - run: flutter test
+      - uses: bluefireteam/flutter-gh-pages@v7
+        with:
+          baseHref: /roicoroyAmigao.github.io/
