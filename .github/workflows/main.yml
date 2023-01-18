@@ -22,7 +22,7 @@ jobs:
       - run: |
           cd build/web
           # git init --quiet
-          git init -b main
+          git init --quiet
           # in line 24 and 25 type your email id and username respectively
           # git config --global user.email roicoroy@mercadoamigao.com
           # git config --global user.name roicoroyAmigao
@@ -35,7 +35,7 @@ jobs:
           # git remote add origin https://${{secrets.hosting_secret}}@repo_link
           git remote add origin https://${{secrets.hosting_secret}}@github.com/roicoroyAmigao/roicoroyAmigao.github.io.git
           git remote -v
-          git checkout -b gh-pages
+          git checkout gh-pages
           git add .
           git commit -m "update"
           git push origin gh-pages -f
