@@ -28,6 +28,10 @@ dependencies:
   material_color_utilities:
   universal_platform: ^1.0.0+1
   url_launcher: ^6.1.7
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  http: ^0.13.5
+  flutter_lints: ^2.0.0
 
 dev_dependencies:
   flutter_test:

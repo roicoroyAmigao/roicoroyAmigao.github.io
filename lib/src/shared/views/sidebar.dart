@@ -23,6 +23,11 @@ class SideBar extends StatelessWidget {
         children: [
           ListTile(
             leading: const Icon(Icons.home),
+            title: const Text('Login'),
+            onTap: () => GoRouter.of(context).go('/'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () => GoRouter.of(context).go('/'),
           ),

@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/artists/artists.dart';
 import '../features/home/home.dart';
+import '../features/login/login.dart';
 import '../features/playlists/playlists.dart';
 import '../features/playlists/view/view.dart';
 import 'providers/artists.dart';
@@ -24,6 +25,11 @@ const List<NavigationDestination> destinations = [
     label: 'Home',
     icon: Icon(Icons.home),
     route: '/',
+  ),
+  NavigationDestination(
+    label: 'Login',
+    icon: Icon(Icons.account_box),
+    route: '/login',
   ),
   NavigationDestination(
     label: 'Playlists',
@@ -65,7 +71,18 @@ final appRouter = GoRouter(
         ),
       ),
     ),
-
+    // LoginScreen
+    GoRoute(
+      path: '/login',
+      pageBuilder: (context, state) => const MaterialPage<void>(
+        key: _pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 1,
+          child: LoginScreen(),
+        ),
+      ),
+    ),
     // PlaylistHomeScreen
     GoRoute(
       path: '/playlists',
@@ -73,7 +90,7 @@ final appRouter = GoRouter(
         key: _pageKey,
         child: RootLayout(
           key: _scaffoldKey,
-          currentIndex: 1,
+          currentIndex: 2,
           child: PlaylistHomeScreen(),
         ),
       ),
@@ -101,7 +118,7 @@ final appRouter = GoRouter(
         key: _pageKey,
         child: RootLayout(
           key: _scaffoldKey,
-          currentIndex: 2,
+          currentIndex: 3,
           child: ArtistsScreen(),
         ),
       ),
@@ -124,7 +141,7 @@ final appRouter = GoRouter(
         ),
       ],
     ),
-    for (final route in destinations.skip(3))
+    for (final route in destinations.skip(4))
       GoRoute(
         path: route.route,
         pageBuilder: (context, state) => MaterialPage<void>(
